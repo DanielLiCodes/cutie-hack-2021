@@ -8,7 +8,7 @@ from firebase_admin import credentials, firestore
 import pandas as pd
 import ast
 
-cred = credentials.Certificate("firebase.json")
+cred = credentials.Certificate("./key.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 mentors = db.collection("mentors")
