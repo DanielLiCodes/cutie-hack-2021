@@ -1,4 +1,5 @@
 import discord
+import asyncio
 from discord.ext import commands
 from discord.ext.commands.errors import CommandInvokeError
 
@@ -11,11 +12,17 @@ class Member_Commands(commands.Cog):
     @commands.guild_only()
     async def register(self, ctx):
         """register"""
-        await ctx.send("Please enter your name!")
+        await ctx.send("Please enter your name!") 
+        check = lambda m: m.author == ctx.author and m.channel == ctx.channel
 
-        
-    
-        
+        try:
+            response = await self.bot.wait_for("message", check=check, timeout=30)
+        except asyncio.TimeoutError:
+            await ctx.send("timed out!")
+            return
+
+        await ctx.send(response.content)
+            
 
 
 
