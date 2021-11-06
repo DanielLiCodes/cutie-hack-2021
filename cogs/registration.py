@@ -26,12 +26,13 @@ class Member_Commands(commands.Cog):
     @commands.command()
     async def register(self, ctx):
         """register"""
-        def addToDb(isMentor, name, major, year, interests):
+        def addToDb(isMentor, name, major, year, interests, request):
             data = {
                 "name" : name,
                 "major" : major,
                 "year" : year,
-                "interests" : interests
+                "interests" : interests,
+                "requests":request
             }
             if isMentor:
                 mentors.add(data)
@@ -53,9 +54,39 @@ class Member_Commands(commands.Cog):
             return
 
         await ctx.send(response.content)
-    
+        await ctx.send("Please enter the number correlating to your BCOE major");
+        majors = ["Bioengineering", "Computer Science", "Chemical Engineering", "Computer Engineering", "Data Science", "Electrical engineering", "Environmental Eng", "Mats Science", "Mechanical Engineering"];
+        numm = 1;
+        for x in majors:
+            await ctx.send((numm)+ " " + x)
+            num+=1;
+        
 
-            
+        try:
+            response = await self.bot.wait_for("message", check=check, timeout=30)
+        except asyncio.TimeoutError:
+            await ctx.send("timed out!")
+            return
+        
+        await ctx.send(response.content)
+
+        await ctx.send("Please enter your year ('1', '2', etc): ")
+        try:
+            response = await self.bot.wait_for("message", check=check, timeout=30)
+        except asyncio.TimeoutError:
+            await ctx.send("timed out!")
+            return
+        
+        await ctx.send(response.content)
+
+        await ctx.send("Please enter your interests : ")
+        try:
+            response = await self.bot.wait_for("message", check=check, timeout=30)
+        except asyncio.TimeoutError:
+            await ctx.send("timed out!")
+            return
+        
+        await ctx.send(response.content)
 
 
 
