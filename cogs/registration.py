@@ -9,11 +9,12 @@ class Member_Commands(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.guild_only()
     async def register(self, ctx):
         """register"""
         await ctx.send("Please enter your name!") 
-        check = lambda m: m.author == ctx.author and m.channel == ctx.channel
+
+        def check(m):
+            return m.author == ctx.author and m.channel == ctx.channel
 
         try:
             response = await self.bot.wait_for("message", check=check, timeout=30)
