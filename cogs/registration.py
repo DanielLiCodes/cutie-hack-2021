@@ -3,14 +3,44 @@ import asyncio
 from discord.ext import commands
 from discord.ext.commands.errors import CommandInvokeError
 
+import firebase_admin
+from firebase_admin import credentials, firestore
+import pandas as pd
+import ast
+
+cred = credentials.Certificate("firebase.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+mentors = db.collection("mentors")
+mentees = db.collection("mentees")
+
+
 
 class Member_Commands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    def fireBase():
+        pass
+
     @commands.command()
     async def register(self, ctx):
         """register"""
+        def addToDb(isMentor, name, major, year, interests):
+            data = {
+                "name" : name,
+                "major" : major,
+                "year" : year,
+                "interests" : interests
+            }
+            if isMentor:
+                mentors.add(data)
+            else:
+                mentees.add(data)
+            
+
+
+            pass
         await ctx.send("Please enter your name!") 
 
         def check(m):
@@ -23,6 +53,8 @@ class Member_Commands(commands.Cog):
             return
 
         await ctx.send(response.content)
+    
+
             
 
 
