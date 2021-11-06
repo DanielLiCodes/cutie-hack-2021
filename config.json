@@ -1,9 +1,11 @@
 {
-  "bot_prefix": "YOUR_BOT_PREFIX_HERE",
-  "token": "YOUR_BOT_TOKEN_HERE",
-  "application_id": "YOUR_APPLICATION_ID_HERE",
+  "bot_prefix": "!",
+  "token": "OTA2NTY2MzEwNDUwODMxMzgw.YYafqw.HT1hNvKGYMSBHZj9Qn56-zipM6g",
+  "application_id": "906566310450831380",
   "owners": [
-    123456789,
-    987654321
+    262294923607277569,
+    620751479292166144,
+    474649200622043138,
+    474649200622043138
   ]
 }

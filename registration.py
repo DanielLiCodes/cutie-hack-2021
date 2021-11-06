@@ -1,37 +1,14 @@
-""""
-Copyright © Krypton 2021 - https://github.com/kkrypt0nn
-Description:
-This is a template to create your own discord bot in python.
-Version: 3.0
-"""
-
-import json
-import os
-import sys
-
+import discord
 from discord.ext import commands
-from discord_slash import cog_ext, SlashContext
 
-# Here we name the cog and create a new class for the cog.
-class Registration(commands.Cog, name="registration"):
+class Registration_Commands(commands.Cog, name="registration"):
     def __init__(self, bot):
         self.bot = bot
 
-    # Here you can just add your own commands, you'll always need to provide "self" as first parameter.
-    @cog_ext.cog_slash(
-        name="testcommand",
-        description="This is a testing command that does nothing.",
-    )   
-    async def testcommand(self, context: SlashContext):
-        """
-        This is a testing command that does nothing.
-        """
-        # Do your stuff here
+    @commands.command(name = 'checkEyesAmmount', aliases=['checkEyes', 'checkEyesAmnt'])
+    @commands.guild_only()
+    async def checkEyesAmmount(self, ctx):
+        await ctx.send("in")
 
-        # Don't forget to remove "pass", that's just because there's no content in the method.
-        pass
-
-
-# And then we finally add the cog to the bot so that it can load, unload, reload and use it's content.
 def setup(bot):
-    bot.add_cog(Registration(bot))
+    bot.add_cog(Registration_Commands(bot))
