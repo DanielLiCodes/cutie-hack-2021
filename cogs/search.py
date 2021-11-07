@@ -21,10 +21,11 @@ class FindOthers(commands.Cog):
 
     @commands.command()
     async def findMentee(self, ctx, category, *, value):
+        """Category(major, year), then value"""
         datas = []
-        for x in db.collection("mentors").get():
+        for x in db.collection("mentees").get():
             data = {'name':x.get("name"),
-                    'discord':ctx.author.name+"#"+str(ctx.author.discriminator),
+                    'discord':x.get("discord"),
                     'major':x.get('major'),
                     'year':x.get('year'),
                     'interests': x.get('interests'),
@@ -55,10 +56,11 @@ class FindOthers(commands.Cog):
     
     @commands.command()
     async def findMentor(self, ctx, category, *, value):
+        """Category(major, year), then value"""
         datas = []
         for x in db.collection("mentors").get():
             data = {'name':x.get("name"),
-                    'discord':ctx.author.name+"#"+str(ctx.author.discriminator),
+                    'discord':x.get("discord"),
                     'major':x.get('major'),
                     'year':x.get('year'),
                     'interests': x.get('interests'),
