@@ -15,7 +15,7 @@ def get_prefix(bot, message):
         return '!'
     return commands.when_mentioned_or(*prefixes)(bot, message)
 
-initial_extensions = ['cogs.registration', 'cogs.search']
+initial_extensions = ['cogs.registration', 'cogs.search', 'cogs.utils']
 
 bot = commands.Bot(command_prefix=get_prefix, description='Bot to help facilitate tutoring and collaberation!')
 
