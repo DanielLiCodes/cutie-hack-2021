@@ -35,4 +35,4 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name="Register to find a mentor/mentee with !register".format(len(bot.guilds))))
     print("in B)")  
 
-bot.run('OTA2NTY2MzEwNDUwODMxMzgw.YYafqw.y9Lu3mXbpP4XBQxIp8z2GJmCYRg', bot=True, reconnect=True)
+bot.run(os.getenv('TOKEN'), bot=True, reconnect=True)
